@@ -1,0 +1,43 @@
+---
+title: "send_email_oncology"
+output: html_document
+date: "2023-07-27"
+---
+
+```{r setup, include=FALSE}
+library(blastula)
+library(rmarkdown)
+library(here)
+library(glue)
+```
+
+
+```{r processing, include = FALSE}
+source("Scripts/pull_and_process_monthly.R", local = knitr::knit_global())
+```
+
+```{r pressure, echo=FALSE}
+email_credential_location <- "/SharedDrive/deans/Presidents/HSPI-PM/Operations Analytics and Optimization/Administrative/Workgroups/R Workbench/Working Area/Data Connections/email_creds"
+cc_list <- c("armando.villegas@mssm.edu")
+send_list <- c("oao@mssm.edu")
+email_subject <- glue("Chelsea Data for {min_date} - {max_date}")
+
+sinai_logo <- add_image(file = "www/Sinai_logo_color.png",
+                        width = 200)
+
+##Use blastula to construct email to send
+compose_email(header = sinai_logo,
+              body = render_email("Scripts/email_body.Rmd")$html_html,
+              footer = "This is an auto generated email") %>%
+  add_attachment(
+    file = save_compressed_file_path,
+    filename = paste0("Chelsea Data Week of ", min_date, ".zip")
+  ) %>%
+  smtp_send(
+    from = "armando.villegas@mssm.edu",
+    to = send_list,
+    cc = cc_list,
+    credentials = creds_file(file = email_credential_location),
+    subject = email_subject
+  )
+```
