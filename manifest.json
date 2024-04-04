@@ -1975,7 +1975,7 @@
     "Scripts/email_body.Rmd": {
       "checksum": "62e9ad2d01a09cc3e7b974dcff1de496"
     },
-    "Scripts/pull_and_process_monthly.R": {
+    "Scripts/pull_and_process_weekly.R": {
       "checksum": "f2b8dab50b9bf4364427a51b09d9780a"
     },
     "send_chelsea_email.Rmd": {

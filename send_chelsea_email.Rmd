@@ -13,7 +13,7 @@ library(glue)
 
 
 ```{r processing, include = FALSE}
-source("Scripts/pull_and_process_monthly.R", local = knitr::knit_global())
+source("Scripts/pull_and_process_weekly.R", local = knitr::knit_global())
 ```
 
 ```{r pressure, echo=FALSE}
