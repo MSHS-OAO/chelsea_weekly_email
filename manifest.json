@@ -1978,7 +1978,7 @@
     "Scripts/pull_and_process_monthly.R": {
       "checksum": "f2b8dab50b9bf4364427a51b09d9780a"
     },
-    "send_oncology_email.Rmd": {
+    "send_chelsea_email.Rmd": {
       "checksum": "6c6aa9e217555862516891dc062c106a"
     },
     "www/Sinai_logo_color.png": {
